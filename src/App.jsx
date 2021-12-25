@@ -1,35 +1,27 @@
 
-import './App.css';
+import {useState} from "react";
+import "./App.css";
 
 function App() {
-  const arr=["Android","Blackberry","iphone","Windows Phone"]
-  const arr2=["Samsung","HTC","Micromax","Apple"]
-  return (
+  const [count,setCount] =useState(0);
+  const addOne = (value) =>{
+    if(count<10){
+      setCount(count+value);
+    }
+    
+
+  };
+  const dOuble = (value) =>{
+    setCount(count*value);
+  }
+  return(
     <div className="App">
-    <section>
-      <h2>Mobile Operating System</h2>
-      <ul>
-      
-      {arr.map((e)=>(
-        <Mobiles num={e}/>
-      ))}
-      
-      </ul>
-      </section>
-      <section>
-      <h2>Mobile Manufacttures</h2>
-      <ul>
-      {arr2.map((e)=>(
-        <Mobiles num={e}/>
-      ))}
-      </ul>
-      </section>
-      
+    <h3>counter:{count}</h3>
+    <button onClick={()=>addOne(1)}>add1</button>
+    <button onClick={ ()  =>  addOne(-1)}>sub1</button>
+    <button onClick={()=>dOuble(2)}>double</button>
     </div>
   );
-}
-function Mobiles({num}) {
-  return <li>{num}</li>
 }
 
 export default App;
